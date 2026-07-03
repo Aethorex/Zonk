@@ -9,6 +9,7 @@
   <PropertyGroup>
     <ApplicationManifest>App\app.manifest</ApplicationManifest>
     <ApplicationIcon>App\Icon.ico</ApplicationIcon>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
+using Zonk.EC;
+using Zonk.Scenes;
 
 namespace Zonk;
 
@@ -8,46 +10,67 @@ public class Zonk : Game
 {
     public static Zonk Instance { get; } = new();
 
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
+    public AScene CurrentScene { get; private set; } = null!;
+
+    private AScene? NextScene = null;
+    private SpriteBatch _spriteBatch = null!;
+    private readonly GraphicsDeviceManager _graphics;
 
     public Zonk()
     {
-        _graphics = new GraphicsDeviceManager(this);
-        Content.RootDirectory = "Content";
+        _graphics = new GraphicsDeviceManager(this)
+        {
+            SynchronizeWithVerticalRetrace = false, // VSync
+            GraphicsProfile = GraphicsProfile.HiDef,
+            PreferredBackBufferWidth = 960,
+            PreferredBackBufferHeight = 720,
+            IsFullScreen = false,
+        };
         IsMouseVisible = true;
+        InactiveSleepTime = TimeSpan.Zero;
+        Content.RootDirectory = "Content";
     }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        // TODO: use this.Content to load your game content here
+        SetNextScene(new DebugScene());
     }
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+        if (NextScene is not null)
+        {
+            CurrentScene?.Dispose();
+            CurrentScene = NextScene;
+            NextScene = null;
+            CurrentScene.Init();
+        }
 
-        // TODO: Add your update logic here
-
-        base.Update(gameTime);
+        CurrentScene.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
+        CurrentScene.Draw(gameTime, _spriteBatch);
+        _spriteBatch.End();
+    }
 
-        base.Draw(gameTime);
+    public void SetNextScene(AScene nextScene)
+    {
+        NextScene = nextScene;
+    }
+
+    protected override void OnExiting(object _1, ExitingEventArgs _2)
+    {
+        CurrentScene?.Dispose();
     }
 }
