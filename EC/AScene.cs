@@ -7,47 +7,47 @@ namespace Zonk.EC;
 
 public abstract class AScene
 {
-    public IReadOnlyList<Entity> Entities => Entities;
+    public IReadOnlyList<AEntity> Entities => Entities;
 
-    private readonly List<Entity> _entities = [];
+    private readonly List<AEntity> _entities = [];
 
     public virtual void Init()
     {
-        foreach (Entity entity in _entities)
+        foreach (AEntity entity in _entities)
             entity.Init();
     }
 
     public virtual void Update(GameTime gameTime)
     {
-        foreach (Entity entity in _entities)
+        foreach (AEntity entity in _entities)
             entity.Update(gameTime);
     }
 
     public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
-        foreach (Entity entity in _entities)
+        foreach (AEntity entity in _entities)
             entity.Draw(gameTime, spriteBatch);
     }
 
     public virtual void Dispose()
     {
-        foreach (Entity entity in _entities)
+        foreach (AEntity entity in _entities)
             entity.Destroy();
     }
 
-    public void AttachEntity(Entity entity)
+    public void AttachEntity(AEntity entity)
     {
         _entities.Add(entity);
     }
 
-    public void RemoveEntity(Entity entity)
+    public void RemoveEntity(AEntity entity)
     {
         _entities.Remove(entity);
     }
 
-    public T? GetEntity<T>() where T : Entity
+    public T? GetEntity<T>() where T : AEntity
         => _entities.OfType<T>().FirstOrDefault();
 
-    public IEnumerable<T> GetEntities<T>() where T : Entity
+    public IEnumerable<T> GetEntities<T>() where T : AEntity
         => _entities.OfType<T>();
 }

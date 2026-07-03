@@ -19,6 +19,11 @@ public class DebugScene : AScene
             Zonk.Instance.Exit();
         }
 
+        if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+        {
+            Zonk.Instance.SetNextScene(new GameScene());
+        }
+
         base.Update(gameTime);
     }
 

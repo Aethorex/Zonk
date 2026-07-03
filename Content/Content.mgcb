@@ -13,3 +13,73 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin what.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:what.png
+
+#begin dice/1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/1.png
+
+#begin dice/1h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/1h.png
+
+#begin dice/2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/2.png
+
+#begin dice/2h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/2h.png
+
+#begin dice/3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/3.png
+
+#begin dice/3h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/3h.png
+
+#begin dice/4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/4.png
+
+#begin dice/4h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/4h.png
+
+#begin dice/5.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/5.png
+
+#begin dice/5h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/5h.png
+
+#begin dice/6.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/6.png
+
+#begin dice/6h.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:dice/6h.png
+
+#begin cup.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:cup.png
+

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Zonk.EC;
 
-public class Entity
+public abstract class AEntity
 {
     public virtual void Init() { }
 
