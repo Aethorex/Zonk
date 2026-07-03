@@ -30,7 +30,7 @@ List of combinations:
 ### Three of a Kind
 
 | Combination | Points | Example | 
-|---|---|---|---|
+|---|---|---|
 | Ones | 1,000 | ⚀⚀⚀ |
 | Twos | 200 | ⚁⚁⚁ |
 | Threes | 300 | ⚂⚂⚂ |
